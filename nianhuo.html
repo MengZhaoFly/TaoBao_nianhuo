@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>年货节--大漠老师作品</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--阿里适配库-->
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+   <link rel="stylesheet" href="./nianhuo.css">
+        
+</head>
+
+<body>
+    <div class="dragon-poplayer" id="dragon-poplayer">
+        <div class="dragon-section dragon-ready-play" id="dragon-ready-play">
+            <div class="dragon-play">
+                <!--第一场景-->
+                <div class="music">
+                    <input type="checkbox" id="music-control" >
+                    <label for="music-control">声音</label>
+                </div>
+                <div id="music">
+                    <audio src="http://gw.alicdn.com/tfscom/TB1Ydd2LpXXXXaUXFXXsKFbFXXX.mp3"  preload="load"  ></audio>
+                </div>
+            </div>
+        </div>
+        <div class="dragon-section dragon-playing " id="dragon-playing">
+            <!--第二场景-->
+            <div class="dragon-wrap">
+                <div class="dragon-content">
+                    <div class="dragon dragon1"></div>
+                    <div class="dragon dragon2"></div>
+                    <div class="dragon dragon3"></div>
+                    <div class="dragon dragon4"></div>
+                    <div class="dragon dragon5"></div>
+                    <section class="cloud"></section>
+                    <section class="cloud"></section>
+                    <section class="cloud"></section>
+                </div>
+                <div class="firecrackers filecrackers-left "></div>
+                <div class="firecrackers filecrackers-right"></div>
+            </div>
+        </div>
+        <div id="close"></div>
+
+    </div>
+    <script>
+    const stage=document.getElementById('dragon-poplayer');
+        const dragonreadyplay = document.querySelector('.dragon-ready-play');
+        const dragonplaying=document.querySelector('.dragon-playing');
+        const musiccontrol=document.querySelector('#music-control');
+        const music=document.querySelector('#music>audio');
+        const onoff=document.querySelector('.music');
+        // 鞭炮
+        const firecrackers=document.querySelectorAll('.firecrackers');
+        const firecracker=document.querySelector('.firecrackers');
+        // 点击静音按钮的阻止冒泡
+        onoff.addEventListener('click',(e=window.event)=>{
+            e.stopPropagation();
+        },false);
+        // 第一场景的点击事件
+        dragonreadyplay.addEventListener('click', function () {
+            this.classList.add('is-animation');
+            
+        },false);
+        // 第一场景结束给第二场景添加动画
+        dragonreadyplay.addEventListener('animationend', function () {
+            dragonplaying.classList.add('is-animation');
+            Array.from(firecrackers).forEach(val=>{
+                val.classList.add('is-animation');
+            });
+            if(!musiccontrol.checked){ 
+                music.play();
+            };
+
+        },false);
+        firecracker.addEventListener('animationend',()=>{
+            music.pause();
+            stage.style.display='none';
+        });
+         dragonreadyplay.addEventListener('animationend', function () {
+            this.classList.add('is-animation');
+        });
+
+    </script>
+</body>
+
+</html>
