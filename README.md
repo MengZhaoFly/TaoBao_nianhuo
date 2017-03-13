@@ -44,6 +44,6 @@ animation: lihua .2s steps(2) infinite,fadeOut .2s linear 6s both;
 ```
 #### 。。。<br>
 第一场景<br>
-![image](https://github.com/MengZhaoFly/TaoBao_nianhuo/blob/master/res1.png)
+![image](https://github.com/MengZhaoFly/TaoBao_nianhuo/blob/master/res1.png)<br>
 第二场景<br>
 ![image](https://github.com/MengZhaoFly/TaoBao_nianhuo/blob/master/res2.png)
